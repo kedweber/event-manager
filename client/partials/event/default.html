@@ -1,0 +1,63 @@
+<p>
+    <div class="button-group">
+        <a ng-href="#/events" class="btn btn-primary">All Events</a>
+    </div>
+</p>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="well">
+            <h1>{{event.item.title}}</h1>
+            <strong>CTA's involvement:</strong> {{event.item.ctas_involvement}}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Start time
+                        </th>
+                        <th>
+                            End time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="day in event.item.days">
+                        <td>
+                            {{day.title}}
+                        </td>
+                        <td>
+                            {{day.date | date:'dd MMMM yyyy'}}
+                        </td>
+                        <td>
+                            {{day.start_time | date:'HH:mm:ss'}}
+                        </td>
+                        <td>
+                            {{day.end_time | date:'HH:mm:ss'}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="well">
+            <h1>Location</h1>
+            <strong>Venue:</strong> {{event.item.venue}} <br />
+            <strong>Address:</strong> {{event.item.address}}
+        </div>
+        <!--<div class="well">-->
+            <!--<h1>Documents</h1>-->
+            <!--<ul>-->
+                <!--<li ng-repeat="document in event.item.documents">-->
+                    <!--{{document.title}} {{document.path}}-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+</div>

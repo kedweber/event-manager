@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-sm-12">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary" ng-click="send()"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-control" ng-change="change()" ng-options="c.value as c.name for c in ctas_involvement" ng-model="filters.ctas_involvement">
+                        <option value="">- Select - </option>
+                    </select>
+                </div>
+            </div>
+            <!--<input type="daterange" ng-model="filters.dates"> <b class="caret"></b>-->
+        </form>
+
+        <!--<div class="row">-->
+            <!--<div class="col-sm-12">-->
+                <!--<form>-->
+                    <!--<div class="input-group">-->
+                        <!--<input type="text" class="form-control" placeholder="Search">-->
+                <!--<span class="input-group-btn">-->
+                    <!--<button type="button" class="btn btn-primary" ng-click="send()">Search</button>-->
+                <!--</span>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
