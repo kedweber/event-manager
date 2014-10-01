@@ -110,7 +110,7 @@ app.factory('EventService', function($resource, $route, $q) {
                             value.end_time = new Date(0, 0, 0, end_time[0], end_time[1], end_time[2]);
                         }, response.resource.item.days);
 
-                        console.log(response)
+                        console.log(response);
 
                         return response || $q.when(response);
                     }
