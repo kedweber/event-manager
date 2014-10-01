@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-offset-4 col-sm-4">
+        <div class="well">
+            <form role="form" name="login-form" ng-submit="login()">
+                <fieldset>
+                    <legend>Login</legend>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" name="login" ng-model="user.username" class="form-control" placeholder="Enter username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" name="password" ng-model="user.password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <!--<input type="checkbox" ng-model="user.remember" checked="checked" />-->
+                    <!--Remember me-->
+                    <button type="submit" class="btn btn-primary pull-right">Login</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
