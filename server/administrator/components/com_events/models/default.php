@@ -12,6 +12,7 @@ class ComEventsModelDefault extends ComDefaultModelDefault
         $this->_state
             ->insert('sort',					'cmd', 'created_on')
             ->insert('taxonomy_taxonomy_id',	'int')
+            ->insert('cache',	'int', 0)
         ;
     }
 

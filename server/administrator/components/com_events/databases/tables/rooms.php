@@ -4,11 +4,7 @@ class ComEventsDatabaseTableRooms extends KDatabaseTableDefault {
 	public function _initialize(KConfig $config) {
 		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
 			array(
-				'ancestors'     => array(
-                    'venue' => array(
-                        'identifier' => 'com://admin/events.model.venues',
-                    )
-                ),
+				'ancestors'     => array('venue'),
 			)
 		);
 
@@ -19,7 +15,7 @@ class ComEventsDatabaseTableRooms extends KDatabaseTableDefault {
 				'modifiable',
 				'orderable',
 				'sluggable',
-//				$relationable,
+				$relationable,
 				'com://admin/translations.database.behavior.translatable',
 			)
 		));

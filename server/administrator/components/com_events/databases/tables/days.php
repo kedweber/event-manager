@@ -4,20 +4,7 @@ class ComEventsDatabaseTableDays extends KDatabaseTableDefault
 {
 	public function _initialize(KConfig $config)
 	{
-		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
-			array(
-				'ancestors'     => array(
-                    'event' => array(
-                        'identifier' => 'com://admin/events.model.events',
-                    )
-                ),
-				'descendants'     => array(
-                    'blocks' => array(
-                        'identifier' => 'com://admin/events.model.blocks',
-                    )
-                ),
-			)
-		);
+		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable');
 
 		$config->append(array(
 			'behaviors' => array(
@@ -28,7 +15,8 @@ class ComEventsDatabaseTableDays extends KDatabaseTableDefault
 				'orderable',
 				'sluggable',
 				'com://admin/cck.database.behavior.elementable',
-				$relationable
+				$relationable,
+				'com://site/redis.database.behavior.cacheable',
 			)
 		));
 

@@ -7,18 +7,11 @@ class ComEventsDatabaseTableEvents extends KDatabaseTableDefault
 	 */
 	public function _initialize(KConfig $config)
 	{
-        $relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
+		$relationable = $this->getBehavior('com://admin/taxonomy.database.behavior.relationable',
 			array(
-				'ancestors'     => array(
+				'ancestors' => array(
 					'days' => array(
 						'identifier' => 'com://admin/events.model.days',
-						'state' => array(
-							'sort' => 'date',
-							'direction' => 'asc'
-						)
-					),
-					'regions' => array(
-						'identifier' => 'com://admin/regions.model.regions'
 					)
 				)
 			)
@@ -37,7 +30,7 @@ class ComEventsDatabaseTableEvents extends KDatabaseTableDefault
 				'com://admin/cck.database.behavior.elementable',
 				$relationable,
                 'com://admin/translations.database.behavior.translatable',
-//				'com://site/redis.database.behavior.cacheable',
+				'com://site/redis.database.behavior.cacheable',
 			)
 		));
 

@@ -8,5 +8,5 @@
  * @subpackage  ...
  * @uses        Com_
  */
-
-defined('KOOWA') or die('Protected resource');
+ 
+defined('KOOWA') or die('Protected resource'); 

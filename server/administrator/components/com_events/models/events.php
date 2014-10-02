@@ -10,6 +10,7 @@ class ComEventsModelEvents extends ComEventsModelDefault
         parent::__construct($config);
 
         $this->_state
+            ->insert('cache', 'int')
             ->insert('enabled', 'int')
         ;
     }
