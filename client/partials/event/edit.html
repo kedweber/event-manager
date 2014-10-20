@@ -17,7 +17,7 @@
 
 <div class="well">
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-6">
             <fieldset>
                 <legend>Content</legend>
                 <div class="form-group">
@@ -27,7 +27,7 @@
             </fieldset>
             <elements></elements>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-6">
             <fieldset>
                 <legend>Days</legend>
                 <table class="table table-condensed">
@@ -73,47 +73,25 @@
                                     <timepicker hour-step="1" minute-step="5" show-meridian="0"></timepicker>
                                 </div>
                             </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" ng-click="remove($index)">X</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success" ng-click="addmeh()">Add!</button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </fieldset>
 
-            <!--<fieldset>-->
-                <!--<legend>Documents</legend>-->
-                <!--<table class="table table-condensed">-->
-                    <!--<thead>-->
-                        <!--<tr>-->
-                            <!--<th>-->
-                                <!--Title-->
-                            <!--</th>-->
-                            <!--<th>-->
-                                <!--File-->
-                            <!--</th>-->
-                            <!--<th>-->
-                                <!--Actions-->
-                            <!--</th>-->
-                        <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                        <!--<tr ng-repeat="document in event.item.documents">-->
-                            <!--<td>-->
-                                <!--<input type="text" class="form-control" ng-model="document.title" ng-required="true" placeholder="Please enter a title..."/>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div ng-controller="UploadCtrl">-->
-                                    <!--<input type="file" ng-file-select="onFileSelect($files, $index)" ng-disabled="!document.title" />-->
-                                <!--</div>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div class="btn-group">-->
-                                    <!--<button type="button" ng-hide="$first && $last" class="btn btn-danger" ng-click="remove($index)">X</button>-->
-                                    <!--<button type="button" ng-show="$last" class="btn btn-success" ng-click="addmeh2()">Add!</button>-->
-                                <!--</div>-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                    <!--</tbody>-->
-                <!--</table>-->
-            <!--</fieldset>-->
         </div>
     </div>
 </div>
