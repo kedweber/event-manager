@@ -1,6 +1,9 @@
 <div class="form-group">
     <label>{{element.title}}</label>
-    <select class="form-control" ng-options="o.value as o.title for o in element.options" ng-model="event.item[element.column]">
+
+    <select ng-if="element.multi" class="form-control" ng-options="o.value as o.title for o in element.options" ng-model="event.item[element.column]" multiple></select>
+
+    <select ng-if="!element.multi" class="form-control" ng-options="o.value as o.title for o in element.options" ng-model="event.item[element.column]">
         <option value="">- Select {{element.title}} -</option>
     </select>
 </div>
