@@ -16,6 +16,7 @@ class ComEventsAliases extends KObject
         if (!$this->_loaded) {
             $maps = array(
                 'com://site/events.database.table.events'	     	=> 'com://admin/events.database.table.events',
+                'com://site/events.database.row.event'	     	=> 'com://admin/events.database.row.event',
 //                'com://site/events.database.table.categories'    	=> 'com://admin/docman.database.table.categories',
 //                'com://site/events.database.table.documents'     	=> 'com://admin/docman.database.table.documents',
             );

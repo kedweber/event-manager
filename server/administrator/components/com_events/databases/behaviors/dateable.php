@@ -8,7 +8,7 @@
  * @subpackage  ...
  * @uses        Com_
  */
- 
+
 defined('KOOWA') or die('Protected resource');
 
 class ComEventsDatabaseBehaviorDateable extends KDatabaseBehaviorAbstract
@@ -33,13 +33,18 @@ class ComEventsDatabaseBehaviorDateable extends KDatabaseBehaviorAbstract
 		$ids = array();
 
 		foreach($this->days as $day) {
-			$row = $this->getService('com://admin/events.model.days')->id($day['id'])->getItem();
-			$row->setData($day);
-			$row->save();
+            // But, but what if we don't have an id???? Then we have to create it.
 
-			if($row->isRelationable()) {
-				$ids[] = $row->taxonomy_taxonomy_id ? $row->taxonomy_taxonomy_id : $row->getTaxonomy()->id;
-			}
+            if($day['id']) {
+                $row = $this->getService('com://admin/events.model.days')->id($day['id'])->getItem();
+            } else {
+                $row = $this->getService('com://admin/events.database.row.day');
+            }
+
+            $row->setData($day);
+            $row->save();
+
+            $ids[] = $row->id;
 		}
 
 		$this->setData(array(
