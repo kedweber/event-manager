@@ -75,6 +75,11 @@ app.controller('EventsCtrl', function ($scope, $route, $location, EventService, 
 
             $scope.export = response.config.url;
         });
+    }
+
+    $scope.tinyMceOptions = {
+        height: "250px",
+        resize: false
     };
     $scope.elements = FieldsetService.get();
 
