@@ -89,7 +89,7 @@ app.controller('EventsCtrl', function ($scope, $route, $location, EventService, 
                 id = data.item.id;
             } else {
                 id = data.id;
-            };
+            }
 
             $location.path('/' + $route.current.params.view + '/' + id);
         });
