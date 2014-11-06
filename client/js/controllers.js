@@ -56,7 +56,7 @@ app.controller('LoginCtrl', function ($scope, $location, AuthService, AlertServi
     }
 });
 
-app.controller('EventsCtrl', function ($scope, $route, $location, EventService, FieldsetService, breadcrumbs) {
+app.controller('EventsCtrl', function ($scope, $route, $location, AlertService, EventService, FieldsetService, breadcrumbs) {
     if( $route.current.params.id || $route.current.params.view == 'event') {
         EventService.get({id: $route.current.params.id}, {view: $route.current.params.view}).$promise.then(function(response) {
             $scope.event = response.resource;
@@ -86,6 +86,18 @@ app.controller('EventsCtrl', function ($scope, $route, $location, EventService, 
     $scope.breadcrumbs = breadcrumbs;
 
     $scope.save = function() {
+        // Add a check for the dates.
+        // When the end date is smaller than the end date, then show an error message.
+
+        for(var index in $scope.event.item.days) {
+            var day = $scope.event.item.days[index];
+
+            if(day.end_time < day.start_time) {
+                AlertService.addAlert('Please check the time for ' + day.title + '.', 'danger', 3000);
+                return false;
+            }
+        }
+
         EventService.save($scope.event.item).$promise.then(function(data){
             var id;
 
