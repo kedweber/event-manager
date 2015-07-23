@@ -15,114 +15,110 @@
     }
 </style>
 
-<div class="well">
-    <div class="row">
-        <div class="col-sm-4">
-            <fieldset>
-                <legend>Content</legend>
-                <div class="form-group">
-                    <label>Title</label>
-                    <input class="required form-control" type="text" name="title" ng-model="event.item.title" placeholder="Title" />
-                </div>
-            </fieldset>
-            <elements></elements>
-        </div>
-        <div class="col-sm-8">
-            <fieldset>
-                <legend>Days</legend>
-                <table class="table table-condensed">
-                    <thead>
-                        <tr>
-                            <th>
-                                Title
-                            </th>
-                            <th>
-                                Date
-                            </th>
+<!-- I will move over to a tabbed interface -->
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('a[data-toggle=tab]').click(function(event) {
+            event.preventDefault();
+            var id = $(this).attr('href');
 
-                            <th>
-                                Start time
-                            </th>
-                            <th>
-                                End Time
-                            </th>
-                            <th>
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="day in event.item.days">
-                            <td>
-                                <input type="text" class="form-control" ng-model="day.title" />
-                            </td>
-                            <td>
-                                <div ng-controller="DatepickerDemoCtrl">
-                                    <p class="input-group">
-                                        <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="day.date" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+            // Disable all the tabs.
+            $('.tab-content').find('.tab-pane').each(function(key, item) {
+                $(item).removeClass('active');
+            });
+
+            $(id).addClass('active');
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#content" data-toggle="tab">Content</a>
+            </li>
+            <li>
+                <a href="#days" data-toggle="tab">Days</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="content">
+                <fieldset>
+                    <legend>Content</legend>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input class="required form-control" type="text" name="title" ng-model="event.item.title" placeholder="Title" />
+                    </div>
+                </fieldset>
+                <elements></elements>
+            </div>
+            <div class="tab-pane" id="days">
+                <fieldset>
+                    <legend>Days</legend>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="width: 350px;">
+                                    Title
+                                </th>
+                                <th style="width: 200px;">
+                                    Date
+                                </th>
+
+                                <th>
+                                    Start time
+                                </th>
+                                <th>
+                                    End Time
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="day in event.item.days">
+                                <td>
+                                    <input type="text" class="form-control" ng-model="day.title" />
+                                </td>
+                                <td>
+                                    <div ng-controller="DatepickerDemoCtrl">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="day.date" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                         </span>
-                                    </p>
-                                </div>
-                            </td>
-                            <td>
-                                <div ng-model="day.start_time" ng-change="changed()" style="display:inline-block;">
-                                    <timepicker hour-step="1" minute-step="5" show-meridian="0"></timepicker>
-                                </div>
-                            </td>
-                            <td>
-                                <div ng-model="day.end_time" ng-change="changed()" style="display:inline-block;">
-                                    <timepicker hour-step="1" minute-step="5" show-meridian="0"></timepicker>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" ng-hide="$first && $last" class="btn btn-danger" ng-click="remove($index)">X</button>
-                                    <button type="button" ng-show="$last" class="btn btn-success" ng-click="addmeh()">Add!</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-
-            <!--<fieldset>-->
-                <!--<legend>Documents</legend>-->
-                <!--<table class="table table-condensed">-->
-                    <!--<thead>-->
-                        <!--<tr>-->
-                            <!--<th>-->
-                                <!--Title-->
-                            <!--</th>-->
-                            <!--<th>-->
-                                <!--File-->
-                            <!--</th>-->
-                            <!--<th>-->
-                                <!--Actions-->
-                            <!--</th>-->
-                        <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                        <!--<tr ng-repeat="document in event.item.documents">-->
-                            <!--<td>-->
-                                <!--<input type="text" class="form-control" ng-model="document.title" ng-required="true" placeholder="Please enter a title..."/>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div ng-controller="UploadCtrl">-->
-                                    <!--<input type="file" ng-file-select="onFileSelect($files, $index)" ng-disabled="!document.title" />-->
-                                <!--</div>-->
-                            <!--</td>-->
-                            <!--<td>-->
-                                <!--<div class="btn-group">-->
-                                    <!--<button type="button" ng-hide="$first && $last" class="btn btn-danger" ng-click="remove($index)">X</button>-->
-                                    <!--<button type="button" ng-show="$last" class="btn btn-success" ng-click="addmeh2()">Add!</button>-->
-                                <!--</div>-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                    <!--</tbody>-->
-                <!--</table>-->
-            <!--</fieldset>-->
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:inline-block;">
+                                        <timepicker ng-model="day.start_time" hour-step="1" minute-step="5" show-meridian="0"></timepicker>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:inline-block;">
+                                        <timepicker ng-model="day.end_time" hour-step="1" minute-step="5" show-meridian="0"></timepicker>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" ng-click="remove($index)">X</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success" ng-click="addmeh()">Add!</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
         </div>
     </div>
 </div>

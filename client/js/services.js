@@ -36,7 +36,6 @@ app.factory('EventService', function($resource, $route, $q) {
             value.end_time = ("0" + end_time.getHours()).slice(-2) + ':' + ("0" + (end_time.getMinutes())).slice(-2) + ':' + ("0" + end_time.getSeconds()).slice(-2);
         }, data.days);
 
-        console.log($.param(data));
         return $.param(data);
     }
 
@@ -109,8 +108,6 @@ app.factory('EventService', function($resource, $route, $q) {
                             value.start_time = new Date(0, 0, 0, start_time[0], start_time[1], start_time[2]);
                             value.end_time = new Date(0, 0, 0, end_time[0], end_time[1], end_time[2]);
                         }, response.resource.item.days);
-
-                        console.log(response);
 
                         return response || $q.when(response);
                     }
